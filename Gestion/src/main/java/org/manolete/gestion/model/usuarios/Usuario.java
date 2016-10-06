@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -24,31 +25,37 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@Column(length = 20, nullable = false) 
 	public String getId() {
 		return id;
 	}
 	
 	@Basic
+	@Column(length = 50, nullable = false)
 	public String getPassword() {
 		return password;
 	}
 	
 	@Basic
+	@Column(length = 100, nullable = false)
 	public String getCorreo() {
 		return correo;
 	}
 	
 	@Basic
+	@Column(length = 1, insertable = false, nullable = false)
 	public boolean isValidado() {
 		return validado;
 	}
 	
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(insertable = false, updatable = false)
 	public Date getModificado() {
 		return modificado;
 	}
 	
 	@Basic
+	@Column(length = 20)
 	public String getModificado_por() {
 		return modificado_por;
 	}
