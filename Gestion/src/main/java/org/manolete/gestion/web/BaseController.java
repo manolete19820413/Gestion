@@ -1,10 +1,15 @@
 package org.manolete.gestion.web;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.manolete.gestion.model.aplicaciones.Aplicacion;
 import org.manolete.gestion.model.aplicaciones.AplicacionesDao;
+import org.manolete.gestion.model.aplicaciones.IAplicacion;
+import org.manolete.gestion.model.perfiles.PerfilAplicacion;
 import org.manolete.gestion.model.perfiles.PerfilesDao;
 import org.manolete.gestion.model.usuarios.UsuariosDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +57,18 @@ public class BaseController {
 		
 		ModelAndView mv = new ModelAndView("aplicaciones");
 		
-		mv.getModel().put("aplicaciones", this.aplicacionesDao.findAll());
+		List<IAplicacion> aplicaciones = this.aplicacionesDao.findAll();
+		
+		List<PerfilAplicacion> lista = aplicaciones.get(0).getPerfilesAplicaciones();
+		
+		for (PerfilAplicacion elemento : lista) {
+			System.out.println(elemento.getId().getAplicacion());
+			System.out.println(elemento.getId().getPerfil());
+			System.out.println(elemento.getAsignado());
+			System.out.println(elemento.getAsignado_por().getId());
+		}
+		
+		mv.getModel().put("aplicaciones", aplicaciones);
 		
 		return mv;		
 	}
@@ -71,11 +87,6 @@ public class BaseController {
 	@Autowired
 	public void setUsuariosDao(UsuariosDao usuariosDao) {
 		this.usuariosDao = usuariosDao;
-	}
-	
-	@Autowired
-	public void setAplicacionesDao(AplicacionesDao aplicacionesDao) {
-		this.aplicacionesDao = aplicacionesDao;
 	}
 	
 	@Autowired

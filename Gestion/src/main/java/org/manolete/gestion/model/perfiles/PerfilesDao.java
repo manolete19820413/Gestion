@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.manolete.gestion.model.usuarios.Usuario;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +20,7 @@ public class PerfilesDao {
 	
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
-	public List<Usuario> findAll() {
+	public List<Perfil> findAll() {
 		return this.entityManager.createQuery("select p from Perfil p").getResultList();
 	}
 
