@@ -1,5 +1,6 @@
 package org.manolete.gestion.model.perfiles;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Basic;
@@ -16,12 +17,15 @@ import org.manolete.gestion.model.usuarios.Usuario;
 
 @Entity
 @Table(name = "perfiles")
-public class Perfil {
+public class Perfil implements Serializable {
 	
 	private String id;
 	private String nombre;
 	private Date modificado;
 	private Usuario modificado_por;
+	// private List<PerfilAplicacion> perfilesAplicaciones;
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@Column(length = 75, nullable = false)
@@ -47,6 +51,13 @@ public class Perfil {
 		return modificado_por;
 	}
 	
+	/*
+	@OneToMany(mappedBy = "perfil")
+	public List<PerfilAplicacion> getPerfilesAplicaciones() {
+		return perfilesAplicaciones;
+	}
+	*/
+	
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -62,4 +73,10 @@ public class Perfil {
 	public void setModificado_por(Usuario modificado_por) {
 		this.modificado_por = modificado_por;
 	}
+	
+	/*
+	public void setPerfilesAplicaciones(List<PerfilAplicacion> perfilesAplicaciones) {
+		this.perfilesAplicaciones = perfilesAplicaciones;
+	}
+	*/
 }

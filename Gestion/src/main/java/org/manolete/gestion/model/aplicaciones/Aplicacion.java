@@ -1,6 +1,8 @@
 package org.manolete.gestion.model.aplicaciones;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -8,20 +10,25 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.manolete.gestion.model.perfiles.PerfilAplicacion;
 import org.manolete.gestion.model.usuarios.Usuario;
 
 @Entity
 @Table(name = "aplicaciones")
-public class Aplicacion {
+public class Aplicacion implements IAplicacion, Serializable {
 	
 	private String codigo;
 	private String nombre;
 	private Date modificado;
 	private Usuario modificado_por;
+	private List<PerfilAplicacion> perfilesAplicaciones;
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@Column(length = 5, nullable = false)
@@ -47,6 +54,11 @@ public class Aplicacion {
 		return modificado_por;
 	}
 	
+	@OneToMany
+	public List<PerfilAplicacion> getPerfilesAplicaciones() {
+		return perfilesAplicaciones;
+	}
+	
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
@@ -61,5 +73,9 @@ public class Aplicacion {
 	
 	public void setModificado_por(Usuario modificado_por) {
 		this.modificado_por = modificado_por;
+	}
+	
+	public void setPerfilesAplicaciones(List<PerfilAplicacion> perfilesAplicaciones) {
+		this.perfilesAplicaciones = perfilesAplicaciones;
 	}
 }
