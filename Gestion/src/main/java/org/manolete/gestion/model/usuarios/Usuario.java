@@ -22,7 +22,7 @@ public class Usuario implements Serializable {
 	private Date modificado;
 	private String modificado_por;
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 7712814502461676427L;
 	
 	@Id
 	@Column(length = 20, nullable = false) 

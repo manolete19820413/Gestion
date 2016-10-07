@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,15 +21,15 @@ import org.manolete.gestion.model.usuarios.Usuario;
 
 @Entity
 @Table(name = "aplicaciones")
-public class Aplicacion implements IAplicacion, Serializable {
+public class Aplicacion implements Serializable {
 	
 	private String codigo;
 	private String nombre;
 	private Date modificado;
 	private Usuario modificado_por;
 	private List<PerfilAplicacion> perfilesAplicaciones;
-	
-	private static final long serialVersionUID = 1L;
+		
+	private static final long serialVersionUID = -3730041226862705575L;
 	
 	@Id
 	@Column(length = 5, nullable = false)
@@ -54,7 +55,7 @@ public class Aplicacion implements IAplicacion, Serializable {
 		return modificado_por;
 	}
 	
-	@OneToMany
+	@OneToMany(mappedBy = "aplicacion", fetch = FetchType.EAGER)
 	public List<PerfilAplicacion> getPerfilesAplicaciones() {
 		return perfilesAplicaciones;
 	}
@@ -78,4 +79,5 @@ public class Aplicacion implements IAplicacion, Serializable {
 	public void setPerfilesAplicaciones(List<PerfilAplicacion> perfilesAplicaciones) {
 		this.perfilesAplicaciones = perfilesAplicaciones;
 	}
+	
 }

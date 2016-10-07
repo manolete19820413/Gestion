@@ -23,5 +23,10 @@ public class PerfilesDao {
 	public List<Perfil> findAll() {
 		return this.entityManager.createQuery("select p from Perfil p").getResultList();
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	@Transactional(readOnly = true)
+	public List<PerfilAplicacion> findAllPA() {
+		return this.entityManager.createQuery("select pa from PerfilAplicacion pa").getResultList();
+	}
 }
