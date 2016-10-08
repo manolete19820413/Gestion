@@ -1,14 +1,13 @@
 package org.manolete.gestion.web;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.manolete.gestion.model.aplicaciones.AplicacionesDao;
-import org.manolete.gestion.model.perfiles.PerfilAplicacion;
+import org.manolete.gestion.model.lenguajes.LenguajesDao;
 import org.manolete.gestion.model.perfiles.PerfilesDao;
+import org.manolete.gestion.model.tickets.TicketsDao;
 import org.manolete.gestion.model.usuarios.UsuariosDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,15 +20,10 @@ public class BaseController {
 	private UsuariosDao usuariosDao;
 	private AplicacionesDao aplicacionesDao;
 	private PerfilesDao perfilesDao;
+	private TicketsDao ticketsDao;
+	private LenguajesDao lenguajesDao;
 
 	private static final Log log = LogFactory.getLog(BaseController.class);
-	
-	/*
-	@RequestMapping("/**")
-	public void handleRequest(HttpServletRequest req) {
-		MDC.put("sessionId", req.getSession().getId());
-		log.debug("Pasando por el controlador base");
-	}*/
 	
 	@RequestMapping(value = "/hola")
 	public ModelAndView diHola(HttpServletRequest req) {
@@ -71,13 +65,26 @@ public class BaseController {
 		return mv;		
 	}
 	
-	@RequestMapping(value = "/pa")
-	public ModelAndView diPerfilesAplicaciones(HttpServletRequest req) {
-		log.info("Calculando perfiles_aplicaciones");
+	@RequestMapping(value = "/tickets")
+	public ModelAndView diTickets(HttpServletRequest req) {
+		log.info("Devolviendo la vista perfiles.jsp");
 		
-		List<PerfilAplicacion> lista = this.perfilesDao.findAllPA();
+		ModelAndView mv = new ModelAndView("tickets");
 		
-		return this.diPerfiles(req);		
+		mv.getModel().put("tickets", this.ticketsDao.findAll());
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = "/lenguajes")
+	public ModelAndView diLenguajes(HttpServletRequest req) {
+		log.info("Devolviendo la vista lenguajes.jsp");
+		
+		ModelAndView mv = new ModelAndView("lenguajes");
+		
+		mv.getModel().put("lenguajes", this.lenguajesDao.findAll());
+		
+		return mv;
 	}
 	
 	@Autowired
@@ -93,5 +100,15 @@ public class BaseController {
 	@Autowired
 	public void setPerfilesDao(PerfilesDao perfilesDao) {
 		this.perfilesDao = perfilesDao;
+	}
+	
+	@Autowired
+	public void setTicketsDao(TicketsDao ticketsDao) {
+		this.ticketsDao = ticketsDao;
+	}
+	
+	@Autowired
+	public void setLenguajesDao(LenguajesDao lenguajesDao) {
+		this.lenguajesDao = lenguajesDao;
 	}
 }

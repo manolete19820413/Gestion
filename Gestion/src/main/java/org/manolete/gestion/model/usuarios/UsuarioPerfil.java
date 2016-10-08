@@ -1,4 +1,4 @@
-package org.manolete.gestion.model.perfiles;
+package org.manolete.gestion.model.usuarios;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,23 +13,22 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.manolete.gestion.model.aplicaciones.Aplicacion;
-import org.manolete.gestion.model.usuarios.Usuario;
+import org.manolete.gestion.model.perfiles.Perfil;
 
 @Entity
-@Table(name = "perfiles_aplicaciones")
-public class PerfilAplicacion implements Serializable {
+@Table(name = "usuarios_perfiles")
+public class UsuarioPerfil implements Serializable {
 	
-	private PerfilAplicacionId id;
+	private UsuarioPerfilId id;
 	private Date asignado;
 	private Usuario asignado_por;
+	private Usuario usuario;
 	private Perfil perfil;
-	private Aplicacion aplicacion;
-	
-	private static final long serialVersionUID = -219295844924150590L;
+
+	private static final long serialVersionUID = -7568458517967429698L;
 	
 	@EmbeddedId
-	public PerfilAplicacionId getId() {
+	public UsuarioPerfilId getId() {
 		return id;
 	}
 	
@@ -38,11 +37,18 @@ public class PerfilAplicacion implements Serializable {
 	public Date getAsignado() {
 		return asignado;
 	}
-	
+
 	@ManyToOne
 	@JoinColumn(name = "asignado_por")
 	public Usuario getAsignado_por() {
 		return asignado_por;
+	}
+
+	@ManyToOne
+	@MapsId("usuario")
+	@JoinColumn(name = "usuario", referencedColumnName = "id")
+	public Usuario getUsuario() {
+		return usuario;
 	}
 	
 	@ManyToOne
@@ -51,31 +57,24 @@ public class PerfilAplicacion implements Serializable {
 	public Perfil getPerfil() {
 		return perfil;
 	}
-		
-	@ManyToOne
-	@MapsId("aplicacion")
-	@JoinColumn(name = "aplicacion", referencedColumnName = "codigo")
-	public Aplicacion getAplicacion() {
-		return aplicacion;
-	}
-	
-	public void setId(PerfilAplicacionId id) {
+
+	public void setId(UsuarioPerfilId id) {
 		this.id = id;
 	}
-		
+
 	public void setAsignado(Date asignado) {
 		this.asignado = asignado;
 	}
-	
+
 	public void setAsignado_por(Usuario asignado_por) {
 		this.asignado_por = asignado_por;
 	}
-	
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
-	}
-	
-	public void setAplicacion(Aplicacion apli) {
-		this.aplicacion = apli;
 	}
 }

@@ -2,18 +2,22 @@ package org.manolete.gestion.model.perfiles;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.manolete.gestion.model.usuarios.Usuario;
+import org.manolete.gestion.model.usuarios.UsuarioPerfil;
 
 @Entity
 @Table(name = "perfiles")
@@ -23,7 +27,8 @@ public class Perfil implements Serializable {
 	private String nombre;
 	private Date modificado;
 	private Usuario modificado_por;
-	// private List<PerfilAplicacion> perfilesAplicaciones;
+	private List<PerfilAplicacion> perfilesAplicaciones;
+	private List<UsuarioPerfil> usuariosPerfiles;
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -51,13 +56,16 @@ public class Perfil implements Serializable {
 		return modificado_por;
 	}
 	
-	/*
-	@OneToMany(mappedBy = "perfil")
+	@OneToMany(mappedBy = "perfil", fetch = FetchType.EAGER)
 	public List<PerfilAplicacion> getPerfilesAplicaciones() {
 		return perfilesAplicaciones;
 	}
-	*/
 	
+	@OneToMany(mappedBy = "perfil", fetch = FetchType.EAGER)
+	public List<UsuarioPerfil> getUsuariosPerfiles() {
+		return usuariosPerfiles;
+	}
+		
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -74,9 +82,11 @@ public class Perfil implements Serializable {
 		this.modificado_por = modificado_por;
 	}
 	
-	/*
 	public void setPerfilesAplicaciones(List<PerfilAplicacion> perfilesAplicaciones) {
 		this.perfilesAplicaciones = perfilesAplicaciones;
 	}
-	*/
+
+	public void setUsuariosPerfiles(List<UsuarioPerfil> usuariosPerfiles) {
+		this.usuariosPerfiles = usuariosPerfiles;
+	}
 }

@@ -15,19 +15,19 @@ public class PerfilAplicacionId implements Serializable {
 	private static final long serialVersionUID = -1288164248959004449L;
 	
 	@Basic
-	@Column(length = 75)
+	@Column(length = 75, nullable = false)
 	public String getPerfil() {
 		return perfil;
 	}
-
-	public void setPerfil(String perfil_id) {
-		this.perfil = perfil_id;
-	}
 	
 	@Basic
-	@Column(length = 5)
+	@Column(length = 5, nullable = false)
 	public String getAplicacion() {
 		return aplicacion;
+	}
+	
+	public void setPerfil(String perfil_id) {
+		this.perfil = perfil_id;
 	}
 
 	public void setAplicacion(String aplicacion_id) {

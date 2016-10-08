@@ -2,11 +2,14 @@ package org.manolete.gestion.model.usuarios;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,6 +24,7 @@ public class Usuario implements Serializable {
 	private boolean validado;
 	private Date modificado;
 	private String modificado_por;
+	private List<UsuarioPerfil> usuariosPerfiles;
 
 	private static final long serialVersionUID = 7712814502461676427L;
 	
@@ -59,6 +63,11 @@ public class Usuario implements Serializable {
 	public String getModificado_por() {
 		return modificado_por;
 	}
+	
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
+	public List<UsuarioPerfil> getUsuariosPerfiles() {
+		return usuariosPerfiles;
+	}
 
 	public void setId(String id) {
 		this.id = id;
@@ -82,5 +91,9 @@ public class Usuario implements Serializable {
 
 	public void setModificado_por(String modificado_por) {
 		this.modificado_por = modificado_por;
+	}
+
+	public void setUsuariosPerfiles(List<UsuarioPerfil> usuariosPerfiles) {
+		this.usuariosPerfiles = usuariosPerfiles;
 	}
 }

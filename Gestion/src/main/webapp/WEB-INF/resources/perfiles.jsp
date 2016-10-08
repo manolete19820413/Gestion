@@ -1,5 +1,4 @@
 <%@page import="org.manolete.gestion.model.perfiles.Perfil"%>
-<%@page import="org.manolete.gestion.model.aplicaciones.Aplicacion"%>
 <%@page import="org.springframework.ui.ModelMap"%>
 <%@page import="org.springframework.ui.Model"%>
 <%@page import="java.util.List"%>
