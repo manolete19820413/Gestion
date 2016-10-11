@@ -37,6 +37,9 @@ public class BaseController {
 		log.info("Devolviendo la vista usuarios.jsp");
 		
 		ModelAndView mv = new ModelAndView("usuarios");
+		System.out.println("Primera llamada");
+		this.usuariosDao.findAll();
+		System.out.println("Segunda llamada");
 		
 		mv.getModel().put("usuarios", this.usuariosDao.findAll());
 		
