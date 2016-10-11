@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.manolete.gestion.model.contenido.MenuPerfil;
+
 @Entity
 @Table(name = "perfiles")
 public class Perfil implements Serializable {
@@ -26,6 +28,7 @@ public class Perfil implements Serializable {
 	private Usuario modificado_por;
 	private List<PerfilAplicacion> perfilesAplicaciones;
 	private List<UsuarioPerfil> usuariosPerfiles;
+	private List<MenuPerfil> menusPerfiles;
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -62,6 +65,11 @@ public class Perfil implements Serializable {
 	public List<UsuarioPerfil> getUsuariosPerfiles() {
 		return usuariosPerfiles;
 	}
+	
+	@OneToMany(mappedBy = "perfil", fetch = FetchType.EAGER)
+	public List<MenuPerfil> getMenusPerfiles() {
+		return menusPerfiles;
+	}
 		
 	public void setId(String id) {
 		this.id = id;
@@ -85,5 +93,9 @@ public class Perfil implements Serializable {
 
 	public void setUsuariosPerfiles(List<UsuarioPerfil> usuariosPerfiles) {
 		this.usuariosPerfiles = usuariosPerfiles;
+	}
+
+	public void setMenusPerfiles(List<MenuPerfil> menusPerfiles) {
+		this.menusPerfiles = menusPerfiles;
 	}
 }

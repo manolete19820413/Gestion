@@ -18,6 +18,7 @@ import javax.persistence.TemporalType;
 
 import org.manolete.gestion.model.acceso.PerfilAplicacion;
 import org.manolete.gestion.model.acceso.Usuario;
+import org.manolete.gestion.model.contenido.Categoria;
 import org.manolete.gestion.model.contenido.Texto;
 
 @Entity
@@ -30,6 +31,7 @@ public class Aplicacion implements Serializable {
 	private Usuario modificado_por;
 	private List<PerfilAplicacion> perfilesAplicaciones;
 	private List<Texto> textos;
+	private List<Categoria> categorias;
 		
 	private static final long serialVersionUID = -3730041226862705575L;
 	
@@ -66,6 +68,11 @@ public class Aplicacion implements Serializable {
 	public List<Texto> getTextos() {
 		return textos;
 	}
+	
+	@OneToMany(mappedBy = "aplicacion", fetch = FetchType.EAGER)
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
 		
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
@@ -89,5 +96,9 @@ public class Aplicacion implements Serializable {
 	
 	public void setTextos(List<Texto> textos) {
 		this.textos = textos;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
 	}	
 }
