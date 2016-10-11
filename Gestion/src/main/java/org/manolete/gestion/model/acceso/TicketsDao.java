@@ -1,4 +1,4 @@
-package org.manolete.gestion.model.tickets;
+package org.manolete.gestion.model.acceso;
 
 import java.util.List;
 

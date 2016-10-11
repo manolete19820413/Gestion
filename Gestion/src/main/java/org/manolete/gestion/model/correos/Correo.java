@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.manolete.gestion.model.usuarios.Usuario;
+import org.manolete.gestion.model.acceso.Usuario;
 
 @Entity
 @Table(name = "correos")

@@ -1,4 +1,4 @@
-package org.manolete.gestion.model.aplicaciones;
+package org.manolete.gestion.model.acceso;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -15,9 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.manolete.gestion.model.perfiles.PerfilAplicacion;
-import org.manolete.gestion.model.usuarios.Usuario;
 
 @Entity
 @Table(name = "aplicaciones")

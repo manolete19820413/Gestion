@@ -1,4 +1,4 @@
-package org.manolete.gestion.model.usuarios;
+package org.manolete.gestion.model.acceso;
 
 import java.util.List;
 

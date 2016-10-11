@@ -1,4 +1,4 @@
-package org.manolete.gestion.model.lenguajes;
+package org.manolete.gestion.model.contenido;
 
 import java.util.List;
 

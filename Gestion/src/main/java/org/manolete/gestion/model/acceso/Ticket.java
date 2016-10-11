@@ -1,4 +1,4 @@
-package org.manolete.gestion.model.tickets;
+package org.manolete.gestion.model.acceso;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -12,8 +12,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.manolete.gestion.model.usuarios.Usuario;
 
 @Entity
 @Table(name = "tickets")

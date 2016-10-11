@@ -4,11 +4,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.manolete.gestion.model.aplicaciones.AplicacionesDao;
-import org.manolete.gestion.model.lenguajes.LenguajesDao;
-import org.manolete.gestion.model.perfiles.PerfilesDao;
-import org.manolete.gestion.model.tickets.TicketsDao;
-import org.manolete.gestion.model.usuarios.UsuariosDao;
+import org.manolete.gestion.model.acceso.AplicacionesDao;
+import org.manolete.gestion.model.acceso.PerfilesDao;
+import org.manolete.gestion.model.acceso.TicketsDao;
+import org.manolete.gestion.model.acceso.UsuariosDao;
+import org.manolete.gestion.model.contenido.LenguajesDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

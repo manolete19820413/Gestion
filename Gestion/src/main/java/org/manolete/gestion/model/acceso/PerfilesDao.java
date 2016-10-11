@@ -1,4 +1,4 @@
-package org.manolete.gestion.model.perfiles;
+package org.manolete.gestion.model.acceso;
 
 import java.util.List;
 
