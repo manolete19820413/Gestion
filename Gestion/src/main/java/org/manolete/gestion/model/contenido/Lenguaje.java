@@ -2,13 +2,16 @@ package org.manolete.gestion.model.contenido;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,6 +26,7 @@ public class Lenguaje implements Serializable {
 	private String nombre;
 	private Date modificado;
 	private Usuario modificado_por;
+	private List<Texto> textos;
 
 	private static final long serialVersionUID = 2894523896639616785L;
 	
@@ -49,6 +53,11 @@ public class Lenguaje implements Serializable {
 	public Usuario getModificado_por() {
 		return modificado_por;
 	}
+	
+	@OneToMany(mappedBy = "lenguaje", fetch = FetchType.EAGER)
+	public List<Texto> getTextos() {
+		return textos;
+	}
 
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
@@ -64,5 +73,9 @@ public class Lenguaje implements Serializable {
 
 	public void setModificado_por(Usuario modificado_por) {
 		this.modificado_por = modificado_por;
+	}
+
+	public void setTextos(List<Texto> textos) {
+		this.textos = textos;
 	}
 }

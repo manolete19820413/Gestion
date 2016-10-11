@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.manolete.gestion.model.aplicaciones.Aplicacion;
+
 @Entity
 @Table(name = "perfiles_aplicaciones")
 public class PerfilAplicacion implements Serializable {
@@ -48,7 +50,7 @@ public class PerfilAplicacion implements Serializable {
 	public Perfil getPerfil() {
 		return perfil;
 	}
-		
+	
 	@ManyToOne
 	@MapsId("aplicacion")
 	@JoinColumn(name = "aplicacion", referencedColumnName = "codigo")

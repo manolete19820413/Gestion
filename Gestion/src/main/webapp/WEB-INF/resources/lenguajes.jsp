@@ -1,4 +1,4 @@
-<%@page import="org.manolete.gestion.model.lenguajes.Lenguaje"%>
+<%@page import="org.manolete.gestion.model.contenido.Lenguaje"%>
 <%@page import="org.springframework.ui.ModelMap"%>
 <%@page import="org.springframework.ui.Model"%>
 <%@page import="java.util.List"%>

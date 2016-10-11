@@ -1,4 +1,4 @@
-<%@page import="org.manolete.gestion.model.tickets.Ticket"%>
+<%@page import="org.manolete.gestion.model.acceso.Ticket"%>
 <%@page import="org.springframework.ui.ModelMap"%>
 <%@page import="org.springframework.ui.Model"%>
 <%@page import="java.util.List"%>

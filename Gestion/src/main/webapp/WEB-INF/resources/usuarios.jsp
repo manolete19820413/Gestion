@@ -1,6 +1,6 @@
+<%@page import="org.manolete.gestion.model.acceso.Usuario"%>
 <%@page import="org.springframework.ui.ModelMap"%>
 <%@page import="org.springframework.ui.Model"%>
-<%@page import="org.manolete.gestion.model.usuarios.Usuario"%>
 <%@page import="java.util.List"%>
 <% List<Usuario> usuarios = (List<Usuario>) request.getAttribute("usuarios"); %>
 <html>

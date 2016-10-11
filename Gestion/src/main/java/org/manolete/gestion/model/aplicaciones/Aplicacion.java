@@ -1,4 +1,4 @@
-package org.manolete.gestion.model.acceso;
+package org.manolete.gestion.model.aplicaciones;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -16,6 +16,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.manolete.gestion.model.acceso.PerfilAplicacion;
+import org.manolete.gestion.model.acceso.Usuario;
+import org.manolete.gestion.model.contenido.Texto;
+
 @Entity
 @Table(name = "aplicaciones")
 public class Aplicacion implements Serializable {
@@ -25,6 +29,7 @@ public class Aplicacion implements Serializable {
 	private Date modificado;
 	private Usuario modificado_por;
 	private List<PerfilAplicacion> perfilesAplicaciones;
+	private List<Texto> textos;
 		
 	private static final long serialVersionUID = -3730041226862705575L;
 	
@@ -57,6 +62,11 @@ public class Aplicacion implements Serializable {
 		return perfilesAplicaciones;
 	}
 	
+	@OneToMany(mappedBy = "aplicacion", fetch = FetchType.EAGER)
+	public List<Texto> getTextos() {
+		return textos;
+	}
+		
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
@@ -77,4 +87,7 @@ public class Aplicacion implements Serializable {
 		this.perfilesAplicaciones = perfilesAplicaciones;
 	}
 	
+	public void setTextos(List<Texto> textos) {
+		this.textos = textos;
+	}	
 }
