@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.manolete.gestion.model.correos.Correo;
+
 @Entity
 @Table(name = "usuarios")
 public class Usuario implements Serializable {
@@ -25,6 +27,7 @@ public class Usuario implements Serializable {
 	private Date modificado;
 	private String modificado_por;
 	private List<UsuarioPerfil> usuariosPerfiles;
+	private List<Correo> correos;
 
 	private static final long serialVersionUID = 7712814502461676427L;
 	
@@ -68,6 +71,11 @@ public class Usuario implements Serializable {
 	public List<UsuarioPerfil> getUsuariosPerfiles() {
 		return usuariosPerfiles;
 	}
+	
+	@OneToMany(mappedBy = "receptor", fetch = FetchType.EAGER)
+	public List<Correo> getCorreos() {
+		return correos;
+	}
 
 	public void setId(String id) {
 		this.id = id;
@@ -95,5 +103,9 @@ public class Usuario implements Serializable {
 
 	public void setUsuariosPerfiles(List<UsuarioPerfil> usuariosPerfiles) {
 		this.usuariosPerfiles = usuariosPerfiles;
+	}
+
+	public void setCorreos(List<Correo> correos) {
+		this.correos = correos;
 	}
 }
