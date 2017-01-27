@@ -32,5 +32,27 @@ public class PerfilAplicacionId implements Serializable {
 
 	public void setAplicacion(String aplicacion_id) {
 		this.aplicacion = aplicacion_id;
-	}	
+	}
+	
+	@Override
+	public boolean equals(Object arg0) {
+		boolean salida;
+		
+		if (arg0 instanceof PerfilAplicacionId) {
+			PerfilAplicacionId argumento = (PerfilAplicacionId) arg0;
+			
+			salida = this.perfil.equals(argumento.perfil) && this.aplicacion.equals(argumento.aplicacion);
+			
+		} else {
+			salida = super.equals(arg0); 
+		}
+		
+		return salida; 
+	}
+
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
 }

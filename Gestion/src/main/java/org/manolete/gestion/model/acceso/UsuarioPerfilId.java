@@ -33,4 +33,25 @@ public class UsuarioPerfilId implements Serializable {
 	public void setPerfil(String perfil) {
 		this.perfil = perfil;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		boolean salida;
+		
+		if (obj instanceof UsuarioPerfilId) {
+			UsuarioPerfilId argumento = (UsuarioPerfilId) obj;
+			
+			salida = this.usuario.equals(argumento.usuario) && this.perfil.equals(argumento.perfil);
+		} else {
+			salida = super.equals(obj);
+		}
+		
+		return salida;
+	}
+
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
 }
